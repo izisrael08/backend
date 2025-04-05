@@ -1,0 +1,63 @@
+# Arquivos do Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Arquivos de configuração local
+config/local*.js
+
+# Diretório de uploads
+uploads/
+
+# Arquivos do IDE/Editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de build/dist
+dist/
+build/
+coverage/
+
+# Arquivos do banco de dados local
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Arquivos do Docker
+docker-compose.override.yml
+
+# Arquivos do usuário
+*.bak
+*.orig
+*.rej
+
+# Testes
+/test/results/
+/test/reports/
+
+# Arquivos específicos do MongoDB
+/data/db/
+mongod.lock
