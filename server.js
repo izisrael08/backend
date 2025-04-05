@@ -8,7 +8,7 @@ const fs = require('fs');
 
 // Configuração do servidor
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 // Middlewares
 app.use(cors({
@@ -26,10 +26,14 @@ if (!fs.existsSync(uploadsDir)) {
 }
 app.use('/uploads', express.static(uploadsDir));
 
-// Conexão com MongoDB
+// Conexão com MongoDB Atlas (configuração para Render.com)
 async function connectDB() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 30000
+    });
     console.log('✅ MongoDB conectado com sucesso');
   } catch (err) {
     console.error('❌ Falha na conexão com MongoDB:', err.message);
@@ -39,7 +43,7 @@ async function connectDB() {
 
 connectDB();
 
-// Modelo do SiteContent
+// Modelo do SiteContent com validações
 const SiteContentSchema = new mongoose.Schema({
   heroSlides: [{
     image: { type: String, required: true },
